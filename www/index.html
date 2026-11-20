@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HACCP-registratie – Billy’s Coffee</title>
+<style>
+:root{--bg:#f4f6f7;--card:#fff;--tx:#1d2a30;--mu:#5f6f76;--bd:#d5dde0;--ac:#1f4e5f;--act:#fff;--ok:#2e7d32;--okb:#e3f3e4;--er:#b3261e;--erb:#fde4e1;--wa:#8a5a00;--wab:#fff1cf;--in:#fffbe0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13191c;--card:#1c262b;--tx:#e8eef0;--mu:#9bacb3;--bd:#34444b;--ac:#6fb5cc;--act:#10272f;--ok:#7fd18a;--okb:#1d3a22;--er:#ff9a92;--erb:#4a2220;--wa:#ffd27a;--wab:#443414;--in:#2b2f1c}}
+*{box-sizing:inherit}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+header{background:var(--ac);color:var(--act);padding:12px 16px}
+header h1{margin:0;font-size:18px}header small{opacity:.85}
+.wrap{max-width:820px;margin:0 auto;padding:12px}
+nav{display:flex;gap:6px;margin:0 0 12px;position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0}
+nav button{flex:1;padding:12px 6px;border:2px solid var(--ac);background:var(--card);color:var(--ac);border-radius:10px;font:600 15px system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+nav button.on{background:var(--ac);color:var(--act)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;margin:0 0 12px}
+h2{font-size:17px;margin:0 0 8px}h3{font-size:15px;margin:14px 0 6px}
+label{display:block;font-size:13px;color:var(--mu);margin:8px 0 3px}
+input,select{width:100%;padding:11px;font:inherit;border:1.5px solid var(--bd);border-radius:8px;background:var(--in);color:var(--tx)}
+input[type=checkbox]{width:22px;height:22px;vertical-align:middle;margin-right:8px}
+.cb{display:flex;align-items:center;font-size:15px;color:var(--tx);margin:10px 0}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{display:block;width:100%;padding:14px;border:0;border-radius:10px;background:var(--ac);color:var(--act);font:700 16px system-ui,-apple-system,"Segoe UI",Arial,sans-serif;margin-top:12px}
+.btn.sec{background:transparent;color:var(--ac);border:2px solid var(--ac)}
+.btn.sm{display:inline-block;width:auto;padding:9px 12px;font-size:14px;margin:6px 6px 0 0}
+.room{border:1.5px solid var(--bd);border-radius:10px;padding:10px;margin:0 0 10px}
+.room.bad{border-color:var(--er);background:var(--erb)}.room.good{border-color:var(--ok)}
+.rh{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.rh b{font-size:16px}.rh small{color:var(--mu)}
+.yn{display:flex;gap:6px}.yn button{flex:1;padding:10px;border:1.5px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;font:600 15px system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.yn button.on[data-v=Ja]{background:var(--okb);border-color:var(--ok);color:var(--ok)}
+.yn button.on[data-v=Nee]{background:var(--erb);border-color:var(--er);color:var(--er)}
+.msg{padding:10px;border-radius:8px;margin-top:10px;font-weight:600}.msg.er{background:var(--erb);color:var(--er)}.msg.ok{background:var(--okb);color:var(--ok)}.msg.wa{background:var(--wab);color:var(--wa)}
+.pill{display:inline-block;padding:3px 9px;border-radius:99px;font-size:13px;font-weight:700}
+.pill.ok{background:var(--okb);color:var(--ok)}.pill.er{background:var(--erb);color:var(--er)}.pill.wa{background:var(--wab);color:var(--wa)}
+.item{border:1.5px solid var(--bd);border-radius:10px;padding:10px;margin:0 0 10px}
+.item.er{border-color:var(--er)}.item.wa{border-color:var(--wa)}
+.mu{color:var(--mu);font-size:13px}.hide{display:none}
+.hist{border-top:1px solid var(--bd);padding:8px 0;font-size:14px}
+.who{max-width:150px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{border:1px solid var(--bd);padding:4px 6px;text-align:left;vertical-align:top}th{background:var(--bg)}td.dev{background:var(--erb);color:var(--er);font-weight:700}.tw{overflow-x:auto}summary{cursor:pointer;font-weight:700;font-size:16px;padding:8px 0}
+@media print{@page{size:A4 landscape;margin:10mm}*{color:#000!important;background:#fff!important;box-shadow:none!important}.noprint,header,nav{display:none!important}.card{border:0!important;padding:0!important}td.dev{color:#b00!important;font-weight:700}table{font-size:10px}thead{display:table-header-group}tr{break-inside:avoid;page-break-inside:avoid}}
+#toast{display:none;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));background:var(--ac);color:var(--act);padding:12px;border-radius:10px;z-index:20;font-weight:600}
+</style>
+<script src="xlsx.full.min.js"></script>
+</head>
+<body>
+<header><h1>HACCP-registratie – Billy’s Coffee</h1><small>Hygiënecode voor de horeca</small></header>
+<div class="wrap">
+ <div class="card noprint"><div class="cols">
+  <div><label for="who">Jouw paraaf (initialen)</label><input id="who" maxlength="6" autocapitalize="characters" placeholder="bijv. AB"></div>
+  <div style="display:flex;align-items:end"><button class="btn sec" id="exp" style="margin:0">Overzicht &amp; back-up</button></div>
+ </div></div>
+ <div id="bk" class="noprint"></div><nav id="tabs" class="noprint"></nav>
+ <main id="main"></main>
+ <p class="mu noprint">Gegevens worden bewaard op dit apparaat, in deze browser. Gebruik daarom steeds hetzelfde apparaat en dezelfde web-adres, en maak regelmatig een back-up (tabblad Overzicht). Bewaar registraties minimaal zes maanden.</p>
+</div>
+<div id="toast" class="noprint"></div>
+<script>
+"use strict";
+var NATIVE=!!(window.Capacitor&&Capacitor.isNativePlatform&&Capacitor.isNativePlatform());
+// ===== Normen (hier aanpassen) =====
+var MAXK=7, MAXV=-18;            // °C koeling / vriezer
+var DAGEN_ONTDOOID=2;            // zonder houdbaarheid op etiket
+var DAGEN_ZUIVEL_7=2, DAGEN_ZUIVEL_4=3;
+var ROOMS=[["Koelcel keuken","k"],["Saladiere keuken","k"],["Vriezer keuken","v"],["Vriezer 1 kelder","v"],["Vriezer 2 kelder","v"],["Vriezer 3 kelder","v"],["Koelcel kelder","k"],["Koelcel 1 bar","k"],["Koelcel 2 bar","k"],["Extra koelcel zoetwaren","k","opt"]];
+var KEY="bc-haccp-v1", S={checks:[],thaw:[],dairy:[],who:""}, tab="koel", flash="";
+try{var raw=localStorage.getItem(KEY);if(raw)S=Object.assign(S,JSON.parse(raw));}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){flash="Let op: opslaan op dit apparaat is mislukt.";}maybeAuto();}
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+function esc(t){return String(t==null?"":t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function iso(d){var m=d.getMonth()+1,x=d.getDate();return d.getFullYear()+"-"+(m<10?"0":"")+m+"-"+(x<10?"0":"")+x}
+function today(){return iso(new Date())}
+function nl(s){return s?s.split("-").reverse().join("-"):""}
+function addDays(s,n){var p=s.split("-"),d=new Date(+p[0],+p[1]-1,+p[2]+n);return iso(d)}
+function diff(a,b){var p=a.split("-"),q=b.split("-");return Math.round((new Date(+p[0],+p[1]-1,+p[2])-new Date(+q[0],+q[1]-1,+q[2]))/864e5)}
+function num(v){v=String(v).replace(",",".").trim();return v===""||isNaN(+v)?null:+v}
+function maxOf(r){return r[1]==="v"?MAXV:MAXK}
+function fmt(n){return String(n).replace(".",",")}
+
+// ===== Tabs =====
+var TABS=[["koel","Koelingen & vriezers"],["thaw","Ontdooid"],["dairy","Zuivel"],["over","Overzicht"]];
+function render(){
+  $("#tabs").innerHTML=TABS.map(function(t){return '<button data-t="'+t[0]+'" class="'+(t[0]===tab?"on":"")+'">'+t[1]+'</button>'}).join("");
+  $("#who").value=S.who||"";
+  $("#bk").innerHTML=bkBanner();
+  $("#main").innerHTML=tab==="koel"?viewKoel():tab==="over"?viewOver():viewItems(tab);
+  if(tab==="koel")$$(".room").forEach(updRoom);
+  if(tab==="thaw"||tab==="dairy")updDue();
+  if(tab==="over")initOver();
+}
+document.addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;
+  if(b.dataset.t){tab=b.dataset.t;flash="";render();return}
+  if(b.id==="exp"){tab="over";flash="";render();window.scrollTo(0,0);return}
+  if(b.id==="bkJson"){backup();return}
+  if(b.id==="bkCsv"){exportXlsx();return}
+  if(b.id==="bkPrint"){if(NATIVE)printNative();else window.print();return}
+  if(b.id==="ovTog"){var ac=["koel","thaw","dairy"].every(function(k){return OVO[k]===false});["koel","thaw","dairy"].forEach(function(k){OVO[k]=ac});$$("details[data-s]").forEach(function(d){d.open=ac});b.textContent=ac?"Alles inklappen":"Alles uitklappen";return}
+  if(b.id==="setpin"){setPin();return}
+  if(b.id==="wipe"){wipeAll();return}
+  if(b.id==="bkImp"){$("#bkFile").click();return}
+  if(b.parentNode&&b.parentNode.classList.contains("yn")){var on=b.classList.contains("on");$$("button",b.parentNode).forEach(function(x){x.classList.remove("on")});if(!on)b.classList.add("on");var r=b.closest(".room");if(r)updRoom(r);return}
+  if(b.id==="saveK")saveCheck();
+  if(b.id==="addI")addItem();
+  if(b.dataset.act)itemAct(b.dataset.act,b.dataset.id);
+});
+document.addEventListener("input",function(e){
+  if(e.target.id==="who"){S.who=e.target.value.toUpperCase();save();return}
+  var r=e.target.closest(".room");if(r)updRoom(r);
+  if(e.target.closest("#addbox"))updDue();
+});
+document.addEventListener("change",function(e){
+  if(e.target.id==="rf"||e.target.id==="rt"||e.target.id==="rd"){drawOver();return}
+  if(e.target.id==="bkFile"){importJson(e.target.files[0]);e.target.value="";return}var r=e.target.closest(".room");if(r)updRoom(r);if(e.target.closest("#addbox"))updDue();});
+
+// ===== Koelingen & vriezers =====
+function viewKoel(){
+  var last=S.checks.length?S.checks[0].date:null, banner="";
+  if(!last)banner='<div class="msg wa">Nog geen controle geregistreerd.</div>';
+  else{var d=diff(today(),last);banner='<div class="msg '+(d>7?"er":"ok")+'">Laatste controle: '+nl(last)+(d>7?" – meer dan een week geleden, nieuwe controle nodig!":" ("+(d===0?"vandaag":d+" dag(en) geleden")+")")+'</div>'}
+  var h='<div class="card"><h2>Wekelijkse temperatuurcontrole</h2><div class="mu">Lees de display af, vul de temperatuur in en beantwoord beide vragen per ruimte. Dagelijks: THT, FiFo en schoonmaak beoordelen.</div>'+banner+
+   '<label for="kd">Datum controle</label><input type="date" id="kd" value="'+today()+'">';
+  ROOMS.forEach(function(r,i){
+    h+='<div class="room" data-i="'+i+'"><div class="rh"><b>'+r[0]+'</b><small>max. '+fmt(maxOf(r))+' °C</small></div>';
+    if(r[2])h+='<label class="cb"><input type="checkbox" class="na"> Niet in gebruik</label>';
+    h+='<div class="rb"><label>Temperatuur (°C)</label><input class="t" inputmode="decimal" placeholder="bijv. 4,5">'+
+     '<label>Producten afgedekt, codering?</label><div class="yn" data-k="cov"><button data-v="Ja">Ja</button><button data-v="Nee">Nee</button></div>'+
+     '<label>THT, producten FiFo opgeslagen?</label><div class="yn" data-k="fifo"><button data-v="Ja">Ja</button><button data-v="Nee">Nee</button></div>'+
+     '<div class="nw hide"><label>Afwijking: wat heb je gedaan? (verplicht)</label><input class="note" placeholder="bijv. product weggegooid, storingsdienst gebeld"></div></div></div>';
+  });
+  h+='<div id="kmsg">'+(flash?'<div class="msg ok">'+esc(flash)+'</div>':'')+'</div><button class="btn" id="saveK">Controle opslaan</button></div>'+histKoel();
+  flash="";return h;
+}
+function roomState(r){
+  var i=+r.dataset.i,R=ROOMS[i],na=$(".na",r)&&$(".na",r).checked;
+  var t=num($(".t",r).value),cov=($('[data-k=cov] .on',r)||{}).dataset,fifo=($('[data-k=fifo] .on',r)||{}).dataset;
+  cov=cov&&cov.v;fifo=fifo&&fifo.v;
+  var dev=!na&&((t!==null&&t>maxOf(R))||cov==="Nee"||fifo==="Nee");
+  return {i:i,name:R[0],na:na,t:t,cov:cov,fifo:fifo,dev:dev,complete:na||(t!==null&&cov&&fifo),note:$(".note",r).value.trim()};
+}
+function updRoom(r){
+  var s=roomState(r);
+  $(".rb",r).classList.toggle("hide",s.na);
+  $(".nw",r).classList.toggle("hide",!s.dev);
+  r.classList.toggle("bad",s.dev);r.classList.toggle("good",!s.dev&&!s.na&&s.complete);
+}
+function saveCheck(){
+  var m=$("#kmsg"),errs=[],rows=[];
+  if(!S.who||!S.who.trim())errs.push("Vul bovenaan je paraaf in.");
+  $$(".room").forEach(function(r){var s=roomState(r);rows.push(s);
+    if(!s.complete)errs.push(s.name+": vul temperatuur en beide vragen in.");
+    else if(s.dev&&!s.note)errs.push(s.name+": noteer welke actie je hebt ondernomen.");});
+  if(!$("#kd").value)errs.push("Vul de datum in.");
+  if(errs.length){m.innerHTML='<div class="msg er">'+errs.map(esc).join("<br>")+'</div>';m.scrollIntoView({block:"center"});return}
+  S.checks.unshift({id:Date.now(),date:$("#kd").value,who:S.who,rows:rows.map(function(s){return {name:s.name,na:s.na,t:s.t,cov:s.cov,fifo:s.fifo,dev:s.dev,note:s.note}})});
+  S.checks.sort(function(a,b){return a.date<b.date?1:a.date>b.date?-1:b.id-a.id});
+  var n=rows.filter(function(s){return s.dev}).length;
+  flash="Controle opgeslagen"+(n?" – "+n+" afwijking(en) vastgelegd.":" – alles in orde.");
+  save();window.scrollTo(0,0);render();
+}
+function histKoel(){
+  if(!S.checks.length)return"";
+  return '<div class="card"><h2>Eerdere controles</h2>'+S.checks.slice(0,30).map(function(c){
+    var d=c.rows.filter(function(r){return r.dev});
+    return '<div class="hist"><b>'+nl(c.date)+'</b> · paraaf '+esc(c.who)+' · '+(d.length?'<span class="pill er">'+d.length+' afwijking(en)</span>':'<span class="pill ok">in orde</span>')+
+      d.map(function(r){return '<div class="mu">• '+esc(r.name)+': '+(r.t!==null?fmt(r.t)+' °C':'')+(r.cov==="Nee"?' · niet afgedekt/gecodeerd':'')+(r.fifo==="Nee"?' · THT/FiFo niet in orde':'')+' → '+esc(r.note)+'</div>'}).join("")+'</div>'}).join("")+'</div>';
+}
+
+// ===== Ontdooid / Zuivel =====
+var CFG={
+ thaw:{title:"Ontdooide inkoopproducten",date:"Ontdooidatum (zoals op de sticker)",stk:"Sticker op het product gecontroleerd: product en ontdooidatum kloppen",err:"Controleer de sticker op het product (product en ontdooidatum) en vink het vakje aan.",list:["Rundvlees rendang (Made by Marn)"],
+  info:"Zonder houdbaarheid op het etiket: binnen "+DAGEN_ONTDOOID+" dagen verwerken. Bewaren op max. "+MAXK+" °C."},
+ dairy:{title:"Zelfbereide zuivelproducten",date:"Bereidingsdatum",stk:"Sticker met bereidingsdatum geplakt",err:"Plak eerst een sticker met de datum en vink het vakje aan.",list:["Kruidenroomkaas","Citroen-mierikswortelcrème","Labneh"],
+  info:"Max. "+DAGEN_ZUIVEL_7+" dagen bij ≤ 7 °C, max. "+DAGEN_ZUIVEL_4+" dagen bij ≤ 4 °C."}
+};
+function due(k,it){
+  if(k==="thaw")return it.label||addDays(it.start,DAGEN_ONTDOOID);
+  return addDays(it.start,it.cat==="4"?DAGEN_ZUIVEL_4:DAGEN_ZUIVEL_7);
+}
+function limit(k,it){return k==="dairy"&&it.cat==="4"?4:MAXK}
+function viewItems(k){
+  var c=CFG[k],h='<div class="card" id="addbox"><h2>'+c.title+'</h2><div class="mu">'+c.info+'</div>'+
+   '<label for="ip">Product</label><input id="ip" list="pl" placeholder="Kies of typ een product"><datalist id="pl">'+c.list.map(function(p){return '<option value="'+esc(p)+'">'}).join("")+'</datalist>'+
+   '<label for="id">'+c.date+'</label><input type="date" id="id" value="'+today()+'">';
+  if(k==="thaw")h+='<label for="il">Houdbaarheid na ontdooien volgens etiket (alleen invullen als dit vermeld is)</label><input type="date" id="il">';
+  else h+='<label for="ic">Bewaard in koeling van</label><select id="ic"><option value="7">max. 7 °C (2 dagen)</option><option value="4">max. 4 °C (3 dagen)</option></select>';
+  h+='<label class="cb"><input type="checkbox" id="is"> '+c.stk+'</label><div id="dueinfo" class="msg ok"></div><div id="imsg">'+(flash?'<div class="msg ok">'+esc(flash)+'</div>':'')+'</div><button class="btn" id="addI">Product toevoegen</button></div>';
+  flash="";
+  var items=S[k].filter(function(i){return!i.done}).sort(function(a,b){return due(k,a)<due(k,b)?-1:1});
+  h+='<h3>In voorraad ('+items.length+')</h3>'+(items.length?items.map(function(i){return itemCard(k,i)}).join(""):'<div class="mu">Niets in voorraad geregistreerd.</div>');
+  var done=S[k].filter(function(i){return i.done}).sort(function(a,b){return a.done.date<b.done.date?1:-1}).slice(0,25);
+  if(done.length)h+='<h3>Afgerond</h3><div class="card">'+done.map(function(i){
+    var late=i.done.date>due(k,i);
+    return '<div class="hist"><b>'+esc(i.product)+'</b> · '+nl(i.start)+' → '+i.done.how+' '+nl(i.done.date)+' ('+esc(i.done.who)+') '+(late?'<span class="pill er">te laat</span>':'<span class="pill ok">op tijd</span>')+'</div>'}).join("")+'</div>';
+  return h;
+}
+function itemCard(k,i){
+  var d=diff(due(k,i),today()),lim=limit(k,i),st,cl;
+  if(d<0){st="VERLOPEN – verwijderen";cl="er"}else if(d===0){st="Vandaag laatste dag";cl="wa"}else{st="Nog "+d+" dag(en)";cl="ok"}
+  var lt=i.temps&&i.temps.length?i.temps[i.temps.length-1]:null;
+  return '<div class="item '+(cl==="ok"?"":cl)+'"><div class="rh"><b>'+esc(i.product)+'</b><span class="pill '+cl+'">'+st+'</span></div>'+
+   '<div class="mu">'+(k==="thaw"?"Ontdooid":"Bereid")+' '+nl(i.start)+' · gebruiken t/m <b>'+nl(due(k,i))+'</b>'+(k==="dairy"?' · koeling max. '+i.cat+' °C':'')+(i.sticker?'':' · <b style="color:var(--er)">sticker niet gecontroleerd</b>')+'</div>'+
+   '<div class="mu">'+(lt?'Laatste temp.: '+fmt(lt.t)+' °C op '+nl(lt.date)+(lt.t>lim?' ⚠':''):'Nog geen temperatuur gemeten')+'</div>'+
+   '<div class="cols"><div><label>Temperatuur (°C)</label><input class="tt" data-id="'+i.id+'" inputmode="decimal"></div><div><label>Actie bij afwijking</label><input class="tn" data-id="'+i.id+'" placeholder="alleen bij afwijking"></div></div>'+
+   '<button class="btn sm" data-act="temp" data-id="'+i.id+'">Temperatuur opslaan</button><button class="btn sm sec" data-act="used" data-id="'+i.id+'">Verwerkt</button><button class="btn sm sec" data-act="trash" data-id="'+i.id+'">Weggegooid</button>'+
+   '<div class="im" id="m'+i.id+'"></div></div>';
+}
+function updDue(){
+  var k=tab,el=$("#dueinfo");if(!el||k==="koel")return;
+  var s=$("#id").value;if(!s){el.textContent="";return}
+  var it={start:s,label:k==="thaw"?$("#il").value:null,cat:k==="dairy"?$("#ic").value:null};
+  el.textContent="Gebruiken t/m "+nl(due(k,it));
+}
+function addItem(){
+  var k=tab,m=$("#imsg"),p=$("#ip").value.trim(),errs=[];
+  if(!S.who||!S.who.trim())errs.push("Vul bovenaan je paraaf in.");
+  if(!p)errs.push("Vul een product in.");
+  if(!$("#id").value)errs.push("Vul de datum in.");
+  if(!$("#is").checked)errs.push(CFG[k].err);
+  if(errs.length){m.innerHTML='<div class="msg er">'+errs.map(esc).join("<br>")+'</div>';return}
+  S[k].push({id:Date.now(),product:p,start:$("#id").value,label:k==="thaw"?($("#il").value||null):null,cat:k==="dairy"?$("#ic").value:null,sticker:true,who:S.who,temps:[],done:null});
+  flash="Product toegevoegd.";save();render();
+}
+function itemAct(a,id){
+  var k=tab,it=S[k].filter(function(x){return String(x.id)===String(id)})[0],m=$("#m"+id);if(!it)return;
+  if(!S.who||!S.who.trim()){m.innerHTML='<div class="msg er">Vul bovenaan je paraaf in.</div>';return}
+  if(a==="temp"){
+    var t=num($('.tt[data-id="'+id+'"]').value),n=$('.tn[data-id="'+id+'"]').value.trim();
+    if(t===null){m.innerHTML='<div class="msg er">Vul een temperatuur in.</div>';return}
+    var bad=t>limit(k,it);
+    if(bad&&!n){m.innerHTML='<div class="msg er">Te warm (max. '+limit(k,it)+' °C). Noteer welke actie je onderneemt.</div>';return}
+    it.temps.push({date:today(),t:t,note:n,who:S.who});flash=bad?"Afwijking vastgelegd.":"Temperatuur opgeslagen.";save();render();
+  }else{
+    it.done={date:today(),how:a==="used"?"verwerkt":"weggegooid",who:S.who};save();render();
+  }
+}
+
+// ===== Export =====
+function q(v){v=v==null?"":String(v);return '"'+v.replace(/"/g,'""')+'"'}
+function exportCsvOld(){
+  var L=[["Koelingen en vriezers"],["Datum","Paraaf","Ruimte","Niet in gebruik","Temperatuur","Afgedekt/codering","THT/FiFo","Afwijking","Actie"]];
+  S.checks.forEach(function(c){c.rows.forEach(function(r){L.push([nl(c.date),c.who,r.name,r.na?"ja":"",r.t===null?"":fmt(r.t),r.cov||"",r.fifo||"",r.dev?"ja":"",r.note])})});
+  [["thaw","Ontdooide inkoopproducten"],["dairy","Zelfbereide zuivel"]].forEach(function(p){
+    L.push([]);L.push([p[1]]);L.push(["Product","Start","Uiterste datum","Koeling max.","Sticker","Paraaf","Temperaturen","Afgerond","Hoe","Door"]);
+    S[p[0]].forEach(function(i){L.push([i.product,nl(i.start),nl(due(p[0],i)),i.cat||"",i.sticker?"ja":"nee",i.who,(i.temps||[]).map(function(t){return nl(t.date)+": "+fmt(t.t)+" °C"+(t.note?" ("+t.note+")":"")}).join("; "),i.done?nl(i.done.date):"",i.done?i.done.how:"",i.done?i.done.who:""])});
+  });
+  var csv="\ufeff"+L.map(function(r){return r.map(q).join(";")}).join("\r\n");
+  dl("haccp-registraties-"+today()+".csv",csv,"text/csv");
+}
+// ===== Download, back-up, overzicht =====
+// ===== Android-app: bestanden opslaan =====
+function u8b64(u){var s="",i;for(i=0;i<u.length;i+=8192)s+=String.fromCharCode.apply(null,u.subarray(i,i+8192));return btoa(s)}
+function toast(t){var e=$("#toast");if(!e)return;e.textContent=t;e.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(function(){e.style.display="none"},7000)}
+function nativeSave(name,data,allowShare){
+  var FS=Capacitor.Plugins.Filesystem,o=typeof data==="string"?{data:data,encoding:"utf8"}:{data:u8b64(data)};
+  return FS.mkdir({path:"HACCP",directory:"DOCUMENTS",recursive:true}).catch(function(){}).then(function(){
+    return FS.writeFile(Object.assign({path:"HACCP/"+name,directory:"DOCUMENTS",recursive:true},o));
+  }).then(function(){return "Opgeslagen in Documenten/HACCP/"+name}).catch(function(err){
+    if(!allowShare)throw err;
+    return FS.writeFile(Object.assign({path:name,directory:"CACHE"},o)).then(function(){return FS.getUri({path:name,directory:"CACHE"})})
+      .then(function(u){return Capacitor.Plugins.Share.share({title:name,files:[u.uri]})}).then(function(){return "Gedeeld: "+name});
+  });
+}
+var autoBusy=false;
+function maybeAuto(){
+  if(!NATIVE||autoBusy||S.checks.length+S.thaw.length+S.dairy.length===0)return;
+  if(S.autoBackup&&diff(today(),S.autoBackup)<7)return;
+  autoBusy=true;var day=today();
+  nativeSave("haccp-auto-backup-"+day+".json",JSON.stringify(S),false).then(function(){
+    S.autoBackup=day;S.lastBackup=day;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}
+    toast("Automatische back-up gemaakt in Documenten/HACCP");autoBusy=false;
+  }).catch(function(){});
+}
+function printNative(){
+  var el=$("#ov");if(!el||!el.innerHTML){toast("Kies eerst een periode.");return}
+  var html='<!DOCTYPE html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HACCP-overzicht</title><style>'+$("style").textContent+'</style></head><body style="padding:12px">'+el.innerHTML.replace(/<details /g,"<details open ")+'</body></html>';
+  nativeSave("haccp-overzicht-"+today()+".html",html,true).then(function(m){toast(m+" – open het bestand in Chrome en kies Afdrukken of Opslaan als PDF")}).catch(function(){toast("Opslaan mislukt")});
+}
+
+function dd(s){if(!s)return null;var p=s.split("-");return new Date(Date.UTC(+p[0],+p[1]-1,+p[2],12))}
+function mkSheet(head,rows,widths,dateCols){
+  var ws=XLSX.utils.aoa_to_sheet([head].concat(rows),{cellDates:true});
+  ws["!cols"]=widths.map(function(w){return {wch:w}});
+  var rg=XLSX.utils.decode_range(ws["!ref"]);
+  for(var R=1;R<=rg.e.r;R++)dateCols.forEach(function(C){var c=ws[XLSX.utils.encode_cell({r:R,c:C})];if(c&&c.t==="d")c.z="dd-mm-yyyy"});
+  ws["!autofilter"]={ref:ws["!ref"]};return ws;
+}
+function itemRows(k){
+  return S[k].slice().sort(function(a,b){return a.start<b.start?-1:a.start>b.start?1:a.id-b.id}).map(function(i){
+    var d=due(k,i),tm=i.temps||[],lt=tm[tm.length-1],late=i.done?i.done.date>d:diff(today(),d)>0,r=[i.product,dd(i.start),dd(d)];
+    if(k==="dairy")r.push(i.cat?"max. "+i.cat+" °C":"");
+    r.push(lt?lt.t:null,lt?dd(lt.date):null,tm.map(function(t){return nl(t.date)+": "+fmt(t.t)+" °C"+(t.note?" ("+t.note+")":"")}).join("; "),
+      i.done?dd(i.done.date):null,i.done?i.done.how:"niet afgerond",i.done?i.done.who:"",late?"Nee":(i.done?"Ja":"Nog in voorraad"),i.who);
+    return r});
+}
+function exportXlsx(){
+  if(!window.XLSX){exportCsvOld();return}
+  var kr=[];
+  S.checks.slice().sort(function(a,b){return a.date<b.date?-1:a.date>b.date?1:a.id-b.id}).forEach(function(c){c.rows.forEach(function(r){
+    var R=ROOMS.filter(function(x){return x[0]===r.name})[0];
+    kr.push([dd(c.date),c.who,r.name,r.na?null:r.t,R?maxOf(R):null,r.na?"":(r.cov||""),r.na?"":(r.fifo||""),r.na?"n.v.t.":(r.dev?"AFWIJKING":"OK"),r.note||""])})});
+  var wb=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb,mkSheet(["Datum controle","Paraaf","Koelvries-ruimte","Temperatuur (°C)","Norm max. (°C)","Afgedekt, codering","THT, FiFo","Resultaat","Actie bij afwijking"],kr,[14,9,38,16,14,18,12,13,50],[0]),"Koelingen en vriezers");
+  var h=["Product","Ontdooidatum","Uiterste gebruiksdatum","Laatste temperatuur (°C)","Datum laatste meting","Alle metingen","Afgerond op","Verwerkt / weggegooid","Afgerond door","Op tijd?","Toegevoegd door"];
+  XLSX.utils.book_append_sheet(wb,mkSheet(h,itemRows("thaw"),[34,14,20,18,18,50,14,20,14,16,14],[1,2,4,6]),"Ontdooide producten");
+  var h2=h.slice();h2.splice(3,0,"Bewaard in koeling");h2[1]="Bereidingsdatum";
+  XLSX.utils.book_append_sheet(wb,mkSheet(h2,itemRows("dairy"),[34,16,20,16,18,18,50,14,20,14,16,14],[1,2,5,7]),"Zuivel");
+  var out=XLSX.write(wb,{bookType:"xlsx",type:"array"});
+  dl("haccp-registraties-"+today()+".xlsx",new Uint8Array(out),"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+}
+
+function blobDl(name,data,mime){var u=URL.createObjectURL(new Blob([data],{type:mime}));var a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000)}
+function dl(name,data,mime){
+  if(NATIVE){nativeSave(name,data,true).then(toast).catch(function(){toast("Opslaan mislukt")});return}
+  if(window.claude&&claude.use){claude.use("downloads").then(function(d){if(!d)throw 0;return d.save({filename:name,data:data})}).catch(function(){blobDl(name,data,mime)});return}
+  blobDl(name,data,mime);
+}
+var bmsg="";
+function bkBanner(){
+  if(S.checks.length+S.thaw.length+S.dairy.length===0)return"";
+  var d=S.lastBackup?diff(today(),S.lastBackup):null;if(d!==null&&d<=30)return"";
+  return '<div class="msg wa" style="margin:0 0 12px">Back-up nodig: '+(d===null?'er is nog nooit een back-up gemaakt.':'de laatste back-up is '+d+' dagen oud.')+' Ga naar Overzicht &amp; back-up.</div>';
+}
+function backup(){S.lastBackup=today();save();dl("haccp-backup-"+today()+".json",JSON.stringify(S),"application/json");bmsg="Back-up gemaakt. Bewaar het bestand buiten de tablet (bijv. Google Drive of e-mail).";render();}
+function importJson(f){
+  if(!f)return;var fr=new FileReader();
+  fr.onload=function(){
+    try{var j=JSON.parse(fr.result);if(!Array.isArray(j.checks)||!Array.isArray(j.thaw)||!Array.isArray(j.dairy))throw 0;
+      var add=0;["checks","thaw","dairy"].forEach(function(k){var ids={};S[k].forEach(function(x){ids[x.id]=1});j[k].forEach(function(x){if(!ids[x.id]){S[k].push(x);add++}})});
+      S.checks.sort(function(a,b){return a.date<b.date?1:a.date>b.date?-1:b.id-a.id});save();bmsg="Teruggezet: "+add+" record(s) toegevoegd. Bestaande gegevens zijn niet overschreven.";
+    }catch(e){bmsg="Dit bestand is geen geldige back-up."}
+    render();
+  };
+  fr.readAsText(f);
+}
+function viewOver(){
+  return '<div class="card noprint"><h2>Overzicht voor controle</h2><div class="mu">Kies de periode (standaard het afgelopen jaar) en druk af of sla op als PDF.</div><div class="cols"><div><label for="rf">Van</label><input type="date" id="rf" value="'+addDays(today(),-365)+'"></div><div><label for="rt">Tot en met</label><input type="date" id="rt" value="'+today()+'"></div></div><label class="cb"><input type="checkbox" id="rd"> Alleen afwijkingen tonen</label><button class="btn sec" id="ovTog">Alles inklappen</button><button class="btn" id="bkPrint">Afdrukken / opslaan als PDF</button></div><div id="ov"></div>'+
+  '<div class="card noprint"><h2>Back-up</h2><div class="msg wa" style="margin:0 0 8px">Belangrijk: gegevens op dit apparaat kunnen verloren gaan (browser leegmaken, defecte of gereset tablet). Zorg dat alles altijd is veiliggesteld met een back-up (bestand) of het Excel-bestand, óf een afdruk van het overzicht, en bewaar dat buiten de tablet.</div><div class="mu">Maak minimaal één keer per maand een back-up en bewaar het bestand buiten de tablet (bijv. Google Drive of e-mail). Met “terugzetten” voeg je een back-upbestand weer toe als gegevens kwijt zijn; bestaande gegevens blijven staan.</div><div id="pst" class="mu" style="margin-top:6px"></div>'+
+  '<button class="btn" id="bkJson">Back-up maken (bestand)</button><button class="btn sec" id="bkImp">Back-up terugzetten</button><input type="file" id="bkFile" accept=".json,application/json" class="hide"><button class="btn sec" id="bkCsv">Alle gegevens als Excel-bestand</button>'+(bmsg?'<div class="msg ok">'+esc(bmsg)+'</div>':'')+'</div>'+viewWipe();
+}
+var PKEY="bc-haccp-pin";
+function getPin(){try{return localStorage.getItem(PKEY)}catch(e){return null}}
+function hashPin(v){
+  var str="bc-haccp|"+v;
+  if(window.crypto&&crypto.subtle&&window.TextEncoder)return crypto.subtle.digest("SHA-256",new TextEncoder().encode(str)).then(function(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return("0"+x.toString(16)).slice(-2)}).join("")});
+  var h=5381;for(var i=0;i<str.length;i++)h=((h<<5)+h+str.charCodeAt(i))|0;return Promise.resolve("s"+h);
+}
+var wmsg="";
+function viewWipe(){
+  var h='<div class="card noprint"><h2>Geschiedenis wissen</h2><div class="msg er" style="margin:0 0 8px">Let op: hiermee verwijder je alle controles en producten van dit apparaat. Dit kan niet ongedaan worden gemaakt. Zorg dat alles eerst is veiliggesteld: een back-up (bestand), het Excel-bestand en/of een afdruk van het overzicht, bewaard buiten de tablet.</div>';
+  if(getPin())h+='<label for="wp">Code</label><input id="wp" type="password" autocomplete="off"><label class="cb"><input type="checkbox" id="wc"> Ik heb een back-up gemaakt of het overzicht/Excel-bestand opgeslagen of afgedrukt en bewaard</label><button class="btn" id="wipe" style="background:var(--er)">Alles wissen</button>';
+  else h+='<div class="mu">Stel eerst een code in. Alleen wie de code kent kan de geschiedenis wissen.</div><label for="np">Nieuwe code (minimaal 4 tekens)</label><input id="np" type="password" autocomplete="off"><button class="btn" id="setpin">Code instellen</button>';
+  h+='<div id="wm">'+(wmsg?'<div class="msg ok">'+esc(wmsg)+'</div>':'')+'</div><div class="mu" style="margin-top:8px">De code is een drempel, geen beveiliging: ze wordt in deze browser bewaard. Vergeten? Dan kan de code alleen worden opgeheven door de browsergegevens van deze pagina te wissen, waarmee ook alle registraties verdwijnen.</div></div>';
+  wmsg="";return h;
+}
+function setPin(){
+  var v=$("#np").value;if(v.length<4){$("#wm").innerHTML='<div class="msg er">Minimaal 4 tekens.</div>';return}
+  hashPin(v).then(function(x){try{localStorage.setItem(PKEY,x);wmsg="Code ingesteld. Onthoud of bewaar de code op een veilige plek.";render()}catch(e){$("#wm").innerHTML='<div class="msg er">Code kon niet worden opgeslagen.</div>'}});
+}
+function wipeAll(){
+  var m=$("#wm");
+  if(!$("#wc").checked){m.innerHTML='<div class="msg er">Vink eerst aan dat alles is veiliggesteld (back-up, Excel of afdruk).</div>';return}
+  hashPin($("#wp").value).then(function(x){
+    if(x!==getPin()){m.innerHTML='<div class="msg er">Onjuiste code.</div>';return}
+    S.checks=[];S.thaw=[];S.dairy=[];save();wmsg="Alle registraties zijn gewist.";render();
+  });
+}
+function initOver(){
+  drawOver();bmsg="";
+  if(NATIVE){var pb=$("#bkPrint");if(pb)pb.textContent="Overzicht opslaan (om af te drukken)"}
+  var t="Laatste back-up: "+(S.lastBackup?nl(S.lastBackup):"nog nooit")+".";
+  $("#pst").textContent=t;
+  if(NATIVE){$("#pst").textContent=t+" Elke week wordt automatisch een back-up opgeslagen in Documenten/HACCP op de tablet.";return}
+  if(navigator.storage&&navigator.storage.persisted)navigator.storage.persisted().then(function(p){var el=$("#pst");if(el)el.textContent=t+" Opslag in de browser is "+(p?"beveiligd tegen automatisch opruimen.":"niet beveiligd tegen automatisch opruimen; maak dus regelmatig een back-up.")}).catch(function(){});
+}
+var OVO={},printing=false;
+document.addEventListener("toggle",function(e){var k=e.target.dataset&&e.target.dataset.s;if(k&&!printing)OVO[k]=e.target.open},true);
+window.addEventListener("beforeprint",function(){printing=true;$$("details[data-s]").forEach(function(d){d.open=true})});
+window.addEventListener("afterprint",function(){$$("details[data-s]").forEach(function(d){d.open=OVO[d.dataset.s]!==false});setTimeout(function(){printing=false},400)});
+function sec(k,title,body){return '<div class="card"><details data-s="'+k+'"'+(OVO[k]===false?"":" open")+'><summary>'+title+'</summary>'+body+'</details></div>'}
+function itemDev(k,i){var d=due(k,i);return (i.done?i.done.date>d:diff(today(),d)>0)||(i.temps||[]).some(function(x){return x.t>limit(k,i)})}
+function drawOver(){
+  var f=$("#rf").value,t=$("#rt").value,el=$("#ov"),only=$("#rd")&&$("#rd").checked;if(!f||!t){el.innerHTML="";return}
+  var cs=S.checks.filter(function(c){return c.date>=f&&c.date<=t}).sort(function(a,b){return a.date<b.date?-1:a.date>b.date?1:a.id-b.id});
+  var dev=0,gaps=[];
+  cs.forEach(function(c,i){dev+=c.rows.filter(function(r){return r.dev}).length;var nx=cs[i+1]?cs[i+1].date:t;if(diff(nx,c.date)>7)gaps.push(nl(c.date)+" → "+(cs[i+1]?nl(nx):"nu"))});
+  var h='<div class="card"><h2>HACCP-registraties – Billy’s Coffee</h2><div>Periode '+nl(f)+' t/m '+nl(t)+' · afgedrukt op '+nl(today())+(only?' · <b>alleen afwijkingen getoond</b>':'')+'</div><div>'+cs.length+' temperatuurcontrole(s), '+dev+' afwijking(en). '+(gaps.length?'<b>Langer dan 7 dagen zonder controle:</b> '+esc(gaps.join("; ")):'Geen perioden van meer dan 7 dagen zonder controle.')+'</div></div>';
+  var shown=only?cs.filter(function(c){return c.rows.some(function(r){return r.dev})}):cs;
+  var b='<div class="tw"><table><thead><tr><th>Datum</th><th>Paraaf</th>'+ROOMS.map(function(r){return '<th>'+esc(r[0].replace(" (indien in gebruik)",""))+'</th>'}).join("")+'<th>Afwijkingen en acties</th></tr></thead><tbody>';
+  shown.forEach(function(c){
+    b+='<tr><td>'+nl(c.date)+'</td><td>'+esc(c.who)+'</td>'+ROOMS.map(function(R){var r=c.rows.filter(function(x){return x.name===R[0]})[0];
+      return !r?'<td></td>':r.na?'<td>n.v.t.</td>':'<td class="'+(r.dev?"dev":"")+'">'+(r.t===null?"":fmt(r.t))+(r.cov==="Nee"||r.fifo==="Nee"?" *":"")+'</td>'}).join("")+
+      '<td>'+c.rows.filter(function(r){return r.dev}).map(function(r){return esc(r.name)+(r.cov==="Nee"?" (niet afgedekt/gecodeerd)":"")+(r.fifo==="Nee"?" (THT/FiFo)":"")+": "+esc(r.note)}).join("<br>")+'</td></tr>';
+  });
+  b+=(shown.length?'':'<tr><td colspan="13">'+(only?'Geen afwijkingen in deze periode.':'Geen controles in deze periode.')+'</td></tr>')+'</tbody></table></div><div class="mu">* = niet afgedekt/gecodeerd of THT/FiFo niet in orde. Rood = afwijking.</div>';
+  h+=sec("koel","Koelingen en vriezers (°C) – "+cs.length+" controle(s), "+dev+" afwijking(en)",b);
+  [["thaw","Ontdooide inkoopproducten"],["dairy","Zelfbereide zuivelproducten"]].forEach(function(p){
+    var k=p[0],its=S[k].filter(function(i){return i.start>=f&&i.start<=t}).sort(function(a,b){return a.start<b.start?-1:1}),nd=its.filter(function(i){return itemDev(k,i)}).length,rows=only?its.filter(function(i){return itemDev(k,i)}):its;
+    var x='<div class="tw"><table><thead><tr><th>Product</th><th>'+(k==="thaw"?"Ontdooid":"Bereid")+'</th><th>Uiterste datum</th>'+(k==="dairy"?'<th>Koeling max.</th>':'')+'<th>Temperaturen</th><th>Afgerond</th><th>Door</th><th>Op tijd?</th></tr></thead><tbody>';
+    rows.forEach(function(i){var d=due(k,i),late=i.done?i.done.date>d:diff(today(),d)>0;
+      x+='<tr><td>'+esc(i.product)+'</td><td>'+nl(i.start)+'</td><td>'+nl(d)+'</td>'+(k==="dairy"?'<td>'+esc(i.cat)+' °C</td>':'')+'<td>'+(i.temps||[]).map(function(m){return nl(m.date)+": "+fmt(m.t)+" °C"+(m.t>limit(k,i)?" ⚠":"")+(m.note?" ("+esc(m.note)+")":"")}).join("<br>")+'</td><td>'+(i.done?i.done.how+" "+nl(i.done.date):"niet afgerond")+'</td><td>'+esc(i.done?i.done.who:i.who)+'</td><td class="'+(late?"dev":"")+'">'+(late?"nee":i.done?"ja":"nog in voorraad")+'</td></tr>'});
+    x+=(rows.length?'':'<tr><td colspan="8">'+(only?'Geen afwijkingen in deze periode.':'Geen registraties in deze periode.')+'</td></tr>')+'</tbody></table></div>';
+    h+=sec(k,p[1]+" – "+its.length+" registratie(s), "+nd+" afwijking(en) of te laat",x);
+  });
+  el.innerHTML=h;
+  var tg=$("#ovTog");if(tg)tg.textContent=["koel","thaw","dairy"].every(function(k){return OVO[k]===false})?"Alles uitklappen":"Alles inklappen";
+}
+if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(function(){});
+render();
+</script>
+</body>
+</html>
